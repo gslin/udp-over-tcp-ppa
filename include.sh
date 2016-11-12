@@ -23,12 +23,12 @@ function work {
 
     if [[ "x$1" = x ]]; then
         cat <<EOF
-        Usage:
-        $0 <tag or hash> [version name]
+Usage:
+    $0 <tag or hash> [version name]
 
-        Example:
-        $0 0.2.0
-        $0 6192b33 0.2.0.20160822
+Example:
+    $0 0.2.0
+    $0 6192b33 0.2.0.20160822
 EOF
         exit
     else
