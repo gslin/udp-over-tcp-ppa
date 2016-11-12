@@ -31,9 +31,9 @@ Example:
     $0 6192b33 0.2.0.20160822
 EOF
         exit
-    else
-        GIT_HASH="$1"
     fi
+
+    GIT_HASH="$1"
 
     if [[ "x$2" = x ]]; then
         VERSION="$1"
