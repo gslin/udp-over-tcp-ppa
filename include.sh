@@ -57,7 +57,7 @@ EOF
     gzip -9 -n "${TARBALL}"
     popd
 
-    cp -R debian/ "${BASEDIR}/"
+    rsync -av debian/ "${BASEDIR}/debian/"
     pushd "${BASEDIR}/"
     dh_make -c "${LICENSE}" -f "../${TARBALL_GZ}" -s --yes
 
