@@ -9,14 +9,7 @@ function work {
         return 255
     fi
 
-    local BASEDIR
-    local GIT_DATETIME
-    local GIT_HASH
-    local TARBALL
-    local TARBALL_GZ
     local TMPDIR
-    local VERSION
-
     if [[ "x$TMPDIR" = x ]]; then
         TMPDIR="/tmp/${NAME}"
     fi
@@ -33,14 +26,19 @@ EOF
         exit
     fi
 
+    local GIT_HASH
     GIT_HASH="$1"
 
+    local VERSION
     if [[ "x$2" = x ]]; then
         VERSION="$1"
     else
         VERSION="$2"
     fi
 
+    local BASEDIR
+    local TARBALL
+    local TARBALL_GZ
     BASEDIR="${TMPDIR}/${NAME}-${VERSION}"
     TARBALL="${NAME}-${VERSION}.tar"
     TARBALL_GZ="${TARBALL}.gz"
@@ -52,6 +50,7 @@ EOF
     git clone "${GIT_REPOSITORY_URL}" "${BASEDIR}/"
     cd "${BASEDIR}/"
     git checkout "${GIT_HASH}"
+    local GIT_DATETIME
     GIT_DATETIME="$(git log --format='%ci' HEAD...HEAD^)"
     cd ..
     tar -cv --exclude-vcs --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
