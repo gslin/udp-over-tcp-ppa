@@ -60,7 +60,7 @@ EOF
 
     cp -R debian/ "${BASEDIR}/"
     pushd "${BASEDIR}/"
-    dh_make -f "../${TARBALL_GZ}" -s < /dev/null
+    dh_make -f "../${TARBALL_GZ}" -s --yes
 
     # If we have already submitted this version before, use -i to increase version.
     if grep -q "^${NAME} (${VERSION}" debian/changelog; then
