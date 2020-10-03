@@ -52,6 +52,7 @@ EOF
     git checkout "${GIT_HASH}"
     local GIT_DATETIME
     GIT_DATETIME="$(git log --format='%ci' HEAD...HEAD^ | head -n 1)"
+    rm -rf .git/
     cd ..
     tar -cv --exclude-vcs --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
     gzip -9 -n "${TARBALL}"
