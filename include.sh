@@ -1,6 +1,14 @@
 #!/bin/bash
 
 function work {
+    local GZIP
+
+    if [[ -x /usr/bin/pigz ]]; then
+        GZIP=pigz
+    else
+        GZIP=gzip
+    fi
+
     if [[ "x${GIT_REPOSITORY_URL}" = x ]]; then
         return 255
     fi
@@ -55,7 +63,7 @@ EOF
     rm -rf .git/
     cd ..
     tar -cv --exclude-vcs --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
-    gzip -9 -n "${TARBALL}"
+    ${GZIP} -9 -n "${TARBALL}"
     popd
 
     rsync -av debian/ "${BASEDIR}/debian/"
