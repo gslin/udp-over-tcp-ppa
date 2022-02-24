@@ -60,9 +60,23 @@ EOF
     git clone "${GIT_REPOSITORY_URL}" "${BASEDIR}/"
     cd "${BASEDIR}/"
     git checkout "${GIT_HASH}"
+
     local GIT_DATETIME
     GIT_DATETIME="$(git log --format='%ci' HEAD...HEAD^ | head -n 1)"
     rm -rf .git/
+
+    if [[ "x${CARGO_VENDOR}" = "xyes" ]]; then
+        cargo vendor
+        mkdir -p .cargo
+        cat >> .cargo/config.toml <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+    fi
+
     cd ..
     tar -cv --exclude-vcs --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
     ${GZIP} -9 -n "${TARBALL}"
