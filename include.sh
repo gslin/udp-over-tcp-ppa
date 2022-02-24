@@ -84,7 +84,7 @@ EOF
 
     rsync -av debian/ "${BASEDIR}/debian/"
     pushd "${BASEDIR}/"
-    dh_make -c "${LICENSE}" -f "../${TARBALL_GZ}" -s --yes
+    dh_make -c "${LICENSE}" -f "../${TARBALL_GZ}" -n -s --yes
 
     # If we have already submitted this version before, use -i to increase version.
     if grep -q "^${NAME} (${VERSION}" debian/changelog; then
