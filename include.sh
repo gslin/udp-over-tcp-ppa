@@ -78,7 +78,7 @@ EOF
     fi
 
     cd ..
-    tar -cv --exclude-vcs --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
+    tar -cv --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
     ${GZIP} -9 -n "${TARBALL}"
     popd
 
