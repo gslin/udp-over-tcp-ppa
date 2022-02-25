@@ -1,0 +1,2 @@
+target/debug/tcp2udp /usr/sbin
+target/debug/udp2tcp /usr/sbin

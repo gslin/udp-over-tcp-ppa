@@ -1,0 +1,15 @@
+Source: udp-over-tcp
+Section: utils
+Priority: optional
+Maintainer: Gea-Suan Lin (PPA) <gslin@gslin.org>
+Build-Depends: cargo, debhelper (>= 9.0.0), dh-cargo
+Standards-Version: 3.9.7
+Homepage: https://github.com/mullvad/udp-over-tcp
+Vcs-Git: https://github.com/mullvad/udp-over-tcp.git
+Vcs-Browser: https://github.com/mullvad/udp-over-tcp
+
+Package: udp-over-tcp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A library (and binaries) for tunneling UDP datagrams over
+ a TCP stream.
