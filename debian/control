@@ -2,7 +2,7 @@ Source: udp-over-tcp
 Section: utils
 Priority: optional
 Maintainer: Gea-Suan Lin (PPA) <gslin@gslin.org>
-Build-Depends: cargo, debhelper (>= 9.0.0), dh-cargo
+Build-Depends: cargo, debhelper (>= 9.0.0)
 Standards-Version: 3.9.7
 Homepage: https://github.com/mullvad/udp-over-tcp
 Vcs-Git: https://github.com/mullvad/udp-over-tcp.git

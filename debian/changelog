@@ -1,3 +1,9 @@
+udp-over-tcp (0.8.0.20220323.0.e06645f-unstable~ppa1) unstable; urgency=medium
+
+  * Packaging 0.8.0.20220323.0.e06645f.
+
+ -- Gea-Suan Lin (PPA) <gslin@gslin.org>  Wed, 23 Mar 2022 13:47:58 +0800
+
 udp-over-tcp (0.0.20220203.0.459056c-unstable~ppa1) unstable; urgency=medium
 
   * Packaging 0.0.20220203.0.459056c.
