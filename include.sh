@@ -77,6 +77,10 @@ directory = "vendor"
 EOF
     fi
 
+    if [[ "x${GO_VENDOR}" = "xyes" ]]; then
+        go mod vendor
+    fi
+
     cd ..
     tar -cv --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
     ${GZIP} -9 -n "${TARBALL}"
