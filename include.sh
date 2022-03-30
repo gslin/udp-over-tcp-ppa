@@ -61,10 +61,6 @@ EOF
     cd "${BASEDIR}/"
     git checkout "${GIT_HASH}"
 
-    local GIT_DATETIME
-    GIT_DATETIME="$(git log --format='%ci' HEAD...HEAD^ | head -n 1)"
-    rm -rf .git/
-
     if [[ "x${CARGO_VENDOR}" = "xyes" ]]; then
         cargo vendor
 
@@ -84,6 +80,10 @@ EOF
     if [[ "x${GO_VENDOR}" = "xyes" ]]; then
         go mod vendor
     fi
+
+    local GIT_DATETIME
+    GIT_DATETIME="$(git log --format='%ci' HEAD...HEAD^ | head -n 1)"
+    rm -rf .git/
 
     cd ..
     tar -cv --mtime="${GIT_DATETIME}" -f "${TARBALL}" "${NAME}-${VERSION}/"
