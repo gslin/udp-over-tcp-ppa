@@ -67,6 +67,10 @@ EOF
 
     if [[ "x${CARGO_VENDOR}" = "xyes" ]]; then
         cargo vendor
+
+        # restore the original vendor/ directory.
+        git checkout -f
+
         mkdir -p .cargo
         cat >> .cargo/config.toml <<EOF
 [source.crates-io]
