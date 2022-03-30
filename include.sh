@@ -69,7 +69,7 @@ EOF
         cargo vendor
 
         # restore the original vendor/ directory.
-        git checkout -f
+        git checkout -f vendor/
 
         mkdir -p .cargo
         cat >> .cargo/config.toml <<EOF
