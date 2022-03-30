@@ -62,11 +62,7 @@ EOF
     git checkout "${GIT_HASH}"
 
     if [[ "x${CARGO_VENDOR}" = "xyes" ]]; then
-        cargo vendor
-
-        # restore the original vendor/ directory.
-        git checkout -f vendor/
-
+        cargo vendor --no-delete
         mkdir -p .cargo
         cat >> .cargo/config.toml <<EOF
 [source.crates-io]
